@@ -51,22 +51,24 @@ router.delete('history/:id', async (req, res) => {
 export default router;
 
 
-// import { Router } from 'express';
-// const router = Router();
+// app.get('/api/contacts/:id', async (req, res) => {
+//   try {
+//     const requestedId: string = req.params.id;
 
-// // import HistoryService from '../../service/historyService.js';
-// // import WeatherService from '../../service/weatherService.js';
+//     // Read contacts from the file, parse the JSON, and find the contact with the requested ID
+//     const contacts: string = await fs.readFile('src/db/contacts.json', 'utf8');
+//     const parsedContacts: Contact[] = JSON.parse(contacts);
+//     const result = parsedContacts.find(
+//       (contact: Contact) => contact.id === requestedId
+//     );
 
-// // TODO: POST Request with city name to retrieve weather data
-// router.post('/', (req, res) => {
-//   // TODO: GET weather data from city name
-//   // TODO: save city to search history
+//     if (result) {
+//       return res.status(200).json(result);
+//     } else {
+//       return res.status(404).json('No match found');
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json('Error getting contacts');
+//   }
 // });
-
-// // TODO: GET search history
-// router.get('/history', async (req, res) => {});
-
-// // * BONUS TODO: DELETE city from search history
-// router.delete('/history/:id', async (req, res) => {});
-
-// export default router;
