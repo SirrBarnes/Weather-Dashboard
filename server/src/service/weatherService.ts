@@ -2,27 +2,27 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // TODO: Define an interface for the Coordinates object
-interface Coordinates {
-  lat: number;
-  lon: number;
-};
+// interface Coordinates {
+//   lat: number;
+//   lon: number;
+// };
 
 // TODO: Define a class for the Weather object
-class Weather {
-  cityName: string;
-  date: number;
-  temp: number;
-  wind: number;
-  humidity: number;
+// class Weather {
+//   cityName: string;
+//   date: number;
+//   temp: number;
+//   wind: number;
+//   humidity: number;
 
-  constructor(cityName: string, date: number, temp: number, wind: number, humidity: number) {
-    this.cityName = cityName;
-    this.date = date;
-    this.temp = temp;
-    this.wind = wind;
-    this.humidity = humidity;
-  }
-};
+//   constructor(cityName: string, date: number, temp: number, wind: number, humidity: number) {
+//     this.cityName = cityName;
+//     this.date = date;
+//     this.temp = temp;
+//     this.wind = wind;
+//     this.humidity = humidity;
+//   }
+// };
 
 // TODO: Complete the WeatherService class
 class WeatherService {
@@ -39,16 +39,11 @@ class WeatherService {
   }
 
   // TODO: Create fetchLocationData method
-  private async fetchLocationData(query: string) {
-    try {
-      const response = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`);
+  // private async fetchLocationData(query: string) {
+  //   const cityName = query;
 
-      const data = await response.json();
-      console.log(data);
-    } catch (error: any) {
-      throw new Error(error);
-    }
-  }
+  //   return cityName;
+  // }
 
   // TODO: Create destructureLocationData method
   // private destructureLocationData(locationData: Coordinates): Coordinates {
@@ -96,7 +91,8 @@ class WeatherService {
 
       const data = await response.json();
       
-      return data;
+      city = this.cityName;
+      console.log(data);
     } catch (error: any) {
       throw new Error(error);
     }

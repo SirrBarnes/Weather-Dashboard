@@ -6,28 +6,34 @@ import WeatherService from '../../service/weatherService.js';
 
 // TODO: POST Request with city name to retrieve weather data
 router.post('/:city', (req, res) => {
+  if (req.params.city) {
+    res.status(400).json({msg: 'Please input city'})
+  }
   // TODO: GET weather data from city name
   router.get('/api/weather/', async (_req, res) => {
     try {
+      if (!req.params.city) {
+        res.status(400).json({msg: 'Please input city'})
+      }
       const cityName = req.params.city;
       
       (cityName);
       const cities = await WeatherService.getWeatherForCity(cityName);
-      
+      console.log(cities);
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
     }
   });
   // TODO: save city to search history
-
 });
 
 // TODO: GET search history
 router.get('/history', async (req, res) => {
   try {
     const historyResults = req.params;
-
+    
+    console.log(historyResults);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -49,26 +55,3 @@ router.delete('history/:id', async (req, res) => {
 });
 
 export default router;
-
-
-// app.get('/api/contacts/:id', async (req, res) => {
-//   try {
-//     const requestedId: string = req.params.id;
-
-//     // Read contacts from the file, parse the JSON, and find the contact with the requested ID
-//     const contacts: string = await fs.readFile('src/db/contacts.json', 'utf8');
-//     const parsedContacts: Contact[] = JSON.parse(contacts);
-//     const result = parsedContacts.find(
-//       (contact: Contact) => contact.id === requestedId
-//     );
-
-//     if (result) {
-//       return res.status(200).json(result);
-//     } else {
-//       return res.status(404).json('No match found');
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json('Error getting contacts');
-//   }
-// });
